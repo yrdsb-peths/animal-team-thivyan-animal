@@ -3,6 +3,7 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
+    int level = 1;
     
     public MyWorld() {
         
@@ -32,15 +33,23 @@ public class MyWorld extends World {
     {
         score++;
         scoreLabel.setValue(score);
+        
+        if (score % 3 == 0)
+        {
+            level += 1;
+        }
     }
     
     
     // create an apple object at random location
     public void createApple()
     {
-        Apple apple = new Apple();
-        int x = Greenfoot.getRandomNumber(600);
-        int y = 0;
-        addObject(apple, x, y);
+        for (int i = 0; i < level; i++)
+        {
+            Apple apple = new Apple();
+            int x = Greenfoot.getRandomNumber(600);
+            int y = 0;
+            addObject(apple, x, y);
+        }
     }
 }
